@@ -1,5 +1,5 @@
 # MarkdownImageBackuper
-C# console application for incremental backups of images from markdown files (currently supports naming from links from Roam Research)
+C# console application for incremental backups of images from markdown files (currently supports naming from links from Roam Research).
 Basic idea behind the program is to be able to regularly backup your images from markdown files which are written through Roam.
 
 ### Usage:
