@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using MarkdownImageBackuper.Io;
 
 namespace MarkdownImageBackuper
 {

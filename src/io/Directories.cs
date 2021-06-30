@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace MarkdownImageBackuper
+namespace MarkdownImageBackuper.Io
 {
     public abstract class BackingDirectory
     {
