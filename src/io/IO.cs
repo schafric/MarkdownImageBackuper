@@ -9,13 +9,13 @@ namespace MarkdownImageBackuper.Io
     {
         public static SourceDirectory GetSourceDirectory()
         {
-            Console.WriteLine("Provide the directory you want to run backup from");
+            Logger.Prompt("Provide the directory you want to run backup from");
             var inputPath = Console.ReadLine();
             var isInputEmpty = inputPath == null || inputPath.Length == 0;
 
             if (isInputEmpty)
             {
-                Console.WriteLine("You provided empty input, please provide path to directory.");
+                Logger.LogInfo("You provided empty input, please provide path to directory.");
                 return GetSourceDirectory();
             }
 
@@ -24,7 +24,7 @@ namespace MarkdownImageBackuper.Io
 
             if (isDirectoryInvalid)
             {
-                Console.WriteLine("The path you've provided points to invalid directory.");
+                Logger.LogInfo("The path you've provided points to invalid directory.");
                 return GetSourceDirectory();
             }
 
@@ -34,14 +34,14 @@ namespace MarkdownImageBackuper.Io
         public static BackingDirectory GetOrCreateBackupDirectory(string sourceDirectoryPath)
         {
             
-            Console.WriteLine("Provide the directory where you want to backup images.");
+            Logger.Prompt("Provide the directory where you want to backup images or hit enter to automatically create new one:");
             var inputPath = Console.ReadLine();
 
             if (String.IsNullOrEmpty(inputPath))
             {
-                Console.WriteLine("Empty input, will create new directory");
+                Logger.LogInfo("Empty input, will create new directory");
                 var newDirectory = CreateNewDirectory(sourceDirectoryPath);
-                Console.WriteLine($"Created backup directory: {newDirectory.DirectoryPath}");
+                Logger.LogInfo($"Created backup directory: {newDirectory.DirectoryPath}");
 
                 return newDirectory;
             }
@@ -51,9 +51,9 @@ namespace MarkdownImageBackuper.Io
 
             if (isInvalidDirectory)
             {
-                Console.WriteLine("The path you've provided points to invalid directory, will create new one");
+                Logger.LogInfo("The path you've provided points to invalid directory, will create new one");
                 var newDirectory = CreateNewDirectory(sourceDirectoryPath);
-                Console.WriteLine($"Created backup directory: {newDirectory.DirectoryPath}");
+                Logger.LogInfo($"Created backup directory: {newDirectory.DirectoryPath}");
 
                 return newDirectory;
             }
@@ -65,6 +65,8 @@ namespace MarkdownImageBackuper.Io
         {
             var downloadedCount = 0;
             var skippedCount = 0;
+            
+            Logger.LogInfo("Starting with backup...");
             
             using (WebClient client = new WebClient())
             {
