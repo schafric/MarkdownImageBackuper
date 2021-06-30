@@ -1,0 +1,4 @@
+- another simple example...
+- ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FSchafric-personal%2FD6TOMsdjlk.png?alt=media&token=bb357c9c-05b9-4d1e-9df2-c2f270541be6)
+- what is in the main project config file?
+    - ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FSchafric-personal%2F01aESOEWgK.png?alt=media&token=2ebf5338-b44a-4701-a26b-9a11f430698c)

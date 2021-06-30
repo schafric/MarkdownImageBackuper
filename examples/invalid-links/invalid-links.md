@@ -1,0 +1,6 @@
+- ![]( incomplete link
+- [](also incomplete link)
+- ![]incomplete link)
+- ![](incomplete link
+- ![](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FSchafric-personal%2FD4TOMsdjlk.png?alt=media&token=bb357c9c-05b9-4d1e-9df2-c2f270541be6) non existent image
+- ![some image description](https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FSchafric-personal%2FXl521c6WtX.png?alt=media&token=973784cd-354b-46a6-8852-9625688a7f3b) with description
