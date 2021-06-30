@@ -40,7 +40,10 @@ namespace MarkdownImageBackuper.Io
             if (String.IsNullOrEmpty(inputPath))
             {
                 Console.WriteLine("Empty input, will create new directory");
-                return CreateNewDirectory(sourceDirectoryPath);
+                var newDirectory = CreateNewDirectory(sourceDirectoryPath);
+                Console.WriteLine($"Created backup directory: {newDirectory.DirectoryPath}");
+
+                return newDirectory;
             }
 
             var directoryPath = inputPath.Split()[0];
@@ -51,6 +54,8 @@ namespace MarkdownImageBackuper.Io
                 Console.WriteLine("The path you've provided points to invalid directory, will create new one");
                 var newDirectory = CreateNewDirectory(sourceDirectoryPath);
                 Console.WriteLine($"Created backup directory: {newDirectory.DirectoryPath}");
+
+                return newDirectory;
             }
 
             return ExistingBackingDirectory.CreateNew(inputPath);
