@@ -31,7 +31,7 @@ namespace MarkdownImageBackuper
             return SourceDirectory.CreateNew(directoryPath);
         }
 
-        public static BackingDirectory GetOrCreateBackupDirectory(SourceDirectory sourceDirectory)
+        public static BackingDirectory GetOrCreateBackupDirectory(string sourceDirectoryPath)
         {
             
             Console.WriteLine("Provide the directory where you want to backup images.");
@@ -40,7 +40,7 @@ namespace MarkdownImageBackuper
             if (String.IsNullOrEmpty(inputPath))
             {
                 Console.WriteLine("Empty input, will create new directory");
-                return CreateNewDirectory(sourceDirectory);
+                return CreateNewDirectory(sourceDirectoryPath);
             }
 
             var directoryPath = inputPath.Split()[0];
@@ -49,7 +49,7 @@ namespace MarkdownImageBackuper
             if (isInvalidDirectory)
             {
                 Console.WriteLine("The path you've provided points to invalid directory, will create new one");
-                var newDirectory = CreateNewDirectory(sourceDirectory);
+                var newDirectory = CreateNewDirectory(sourceDirectoryPath);
                 Console.WriteLine($"Created backup directory: {newDirectory.DirectoryPath}");
             }
 
@@ -84,19 +84,19 @@ namespace MarkdownImageBackuper
             return (downloadedCount, skippedCount);
         }
 
-        public static void PrintSummary(int downloadedCount, int skippedCount, TimeSpan timeTaken, SourceDirectory sourceDirectory, BackingDirectory backingDirectory)
+        public static void PrintSummary(int downloadedCount, int skippedCount, TimeSpan timeTaken, string fromPath, string toPath)
         {
             Console.WriteLine("------------ SUMMARY ---------------");
             Console.WriteLine($"Backed up (downloaded): {downloadedCount} and skipped {skippedCount} images");
-            Console.WriteLine($" - FROM: {sourceDirectory.DirectoryPath}");
-            Console.WriteLine($" - TO: {backingDirectory.DirectoryPath}");
+            Console.WriteLine($" - FROM: {fromPath}");
+            Console.WriteLine($" - TO: {toPath}");
             Console.WriteLine("It took: " + timeTaken.ToString(@"m\:ss\.fff"));
         }
 
-        private static NewBackingDirectory CreateNewDirectory(SourceDirectory sourceDirectory)
+        private static NewBackingDirectory CreateNewDirectory(string sourceDirectoryPath)
         {
             var nowTime = DateTime.Now;
-            return NewBackingDirectory.CreateNew($"{sourceDirectory.DirectoryPath}\\backup_{nowTime.Year}-{nowTime.Month}-{nowTime.Day}-{nowTime.Hour}-{nowTime.Minute}-{nowTime.Second}");
+            return NewBackingDirectory.CreateNew($"{sourceDirectoryPath}\\backup_{nowTime.Year}-{nowTime.Month}-{nowTime.Day}-{nowTime.Hour}-{nowTime.Minute}-{nowTime.Second}");
         }
     }
 }

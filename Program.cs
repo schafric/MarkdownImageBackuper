@@ -8,14 +8,14 @@ namespace MarkdownImageBackuper
         {
             var timer = new Stopwatch();
             var sourceDirectory = IO.GetSourceDirectory();
-            var backupDirectory = IO.GetOrCreateBackupDirectory(sourceDirectory);
-            var imagesToDownload = MarkdownParser.ParseImageLinks(sourceDirectory);
+            var backupDirectory = IO.GetOrCreateBackupDirectory(sourceDirectory.DirectoryPath);
+            var imageLinks = MarkdownParser.ParseImageLinks(sourceDirectory);
 
             timer.Start();
-            var (downloaded, skipped) = IO.DownloadImagesFromLinks(imagesToDownload, backupDirectory);
+            var (downloaded, skipped) = IO.DownloadImagesFromLinks(imageLinks, backupDirectory);
             timer.Stop();
 
-            IO.PrintSummary(downloaded, skipped, timer.Elapsed, sourceDirectory, backupDirectory);
+            IO.PrintSummary(downloaded, skipped, timer.Elapsed, sourceDirectory.DirectoryPath, backupDirectory.DirectoryPath);
         }
     }
 }
